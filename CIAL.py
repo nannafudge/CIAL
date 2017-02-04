@@ -45,7 +45,7 @@ if __name__ == "__main__":
         exit(-1)
     hammerthread = threading.Thread(target=hammer_time, args=sys.argv[1], daemon=True)
     hammerthread.start()
-    while True and hammerthread.is_alive():
+    while hammerthread.is_alive():
         try:
             Screen.wrapper(draw, catch_interrupt=True, arguments=last_scene)
         except ResizeScreenError as e:

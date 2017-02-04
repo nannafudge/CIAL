@@ -40,11 +40,10 @@ def hammer_time(url):
 if __name__ == "__main__":
     # Just fuck my shit up fam
     last_scene = None
-    url = sys.argv[0]
-    if url is None:
+    if len(sys.argv) != 2:
         print("No URL supplied to load test")
         exit(-1)
-    hammerthread = threading.Thread(target=hammer_time, args=url, daemon=True)
+    hammerthread = threading.Thread(target=hammer_time, args=sys.argv[1], daemon=True)
     hammerthread.start()
     while True and hammerthread.is_alive():
         try:
